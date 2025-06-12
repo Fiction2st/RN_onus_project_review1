@@ -1,12 +1,11 @@
 import { Text } from '@react-navigation/elements';
 import { StyleSheet, View } from 'react-native';
+import FancyCard from "../../component/FancyCard";
 
-export function Updates() {
+export function CardExample() {
   return (
-    <View style={styles.container}>
-      <Text>Updates Screen</Text>
-    </View>
-  );
+    <FancyCard/>
+  )
 }
 
 const styles = StyleSheet.create({

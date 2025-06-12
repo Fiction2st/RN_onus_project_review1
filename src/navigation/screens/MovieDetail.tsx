@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useRoute} from "@react-navigation/native";
 import axios from "axios";
 import {ActivityIndicator, SafeAreaView, View, Text} from "react-native";
-import {useGetMovieById} from "../../api/apiFunc";
+import {useGetMovieById} from "../../api/useQueries";
 
 const MovieDetail = () => {
     const route = useRoute();

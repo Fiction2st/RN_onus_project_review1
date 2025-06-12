@@ -11,11 +11,12 @@ import newspaper from '../assets/newspaper.png';
 import { Home } from './screens/Home';
 import { Profile } from './screens/Profile';
 import { Settings } from './screens/Settings';
-import { Updates } from './screens/Updates';
+import { CardExample } from './screens/CardExample';
 import { NotFound } from './screens/NotFound';
 import {AntDesign, MaterialIcons} from "@expo/vector-icons";
 import Home2 from "./screens/Home2";
 import MovieDetail from "./screens/MovieDetail";
+import CardListScreen from "./screens/CardListScreen";
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
@@ -32,6 +33,15 @@ const HomeTabs = createBottomTabNavigator({
             //     height: size,
             //   }}
             // />
+            <AntDesign name="book" size={24} color={color} />
+        ),
+      },
+    },
+    CardListScreen: {
+      screen: CardListScreen,
+      options: {
+        title: '영화정보',
+        tabBarIcon: ({ color, size }) => (
             <AntDesign name="book" size={24} color={color} />
         ),
       },
@@ -60,7 +70,7 @@ const HomeTabs = createBottomTabNavigator({
       },
     },
     Updates: {
-      screen: Updates,
+      screen: CardExample,
       options: {
         tabBarIcon: ({ color, size }) => (
             // <Image
@@ -73,6 +83,7 @@ const HomeTabs = createBottomTabNavigator({
             // />
             <MaterialIcons name="update" size={24} color={color} />
         ),
+        title : 'card',
       },
     },
   },

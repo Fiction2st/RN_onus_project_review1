@@ -3,75 +3,77 @@ import {Animated, SafeAreaView, StyleSheet, View, ScrollView, TouchableOpacity} 
 import {useNavigation} from "@react-navigation/native";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {useGetMovies} from "../../api/apiFunc";
+import {useGetMovies} from "../../api/useQueries";
+
 
 
 export function Home() {
-  const navigation = useNavigation();
+    const navigation = useNavigation();
+    // const [isLoading, setIsLoading] = useState(false);
 
-  const {data : movies, isError} = useGetMovies();
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [movies, setMovies] = useState([]);
-  // const fetchMovies = async () => {
-  //     try {
-  //         setIsLoading(!isLoading);
-  //         const url =
-  //             "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
-  //         const options = {
-  //             method: "GET",
-  //             headers: {
-  //                 accept: "application/json",
-  //                 Authorization:
-  //                     'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzODcwYjcyMGNmNmFmNTViZjI2ZTk5YjA0NjBkMjljMyIsIm5iZiI6MTc0NzM1OTAxMS44NDUsInN1YiI6IjY4MjY5NTIzZThhYjJlYzM4YjRiNThlMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.X5z6bQ_4d9d9MASFzAregzMaYJQWtmf2nnXlgZvz9NU'
-  //             },
-  //         };
-  //         const {data} = await axios(url, options);
-  //         setMovies(data.results);
-  //         setIsLoading(!isLoading);
-  //     } catch (err) {
-  //         console.log(err);
-  //         setIsLoading(!isLoading);
-  //     }
-  // };
-  // console.log(movies);
-  // useEffect(()=>{
-  //     fetchMovies();
-  // }, []);
+    const {data : movies, isError} = useGetMovies();
 
-  const goToDetails = (movie) => {
-      navigation.navigate("MovieDetail", {id : movie.id, title:movie.title});
-  }
+    // const [movies, setMovies] = useState([]);
+    // const fetchMovies = async () => {
+    //     try {
+    //         setIsLoading(!isLoading);
+    //         const url =
+    //             "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
+    //         const options = {
+    //             method: "GET",
+    //             headers: {
+    //                 accept: "application/json",
+    //                 Authorization:
+    //                     'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzODcwYjcyMGNmNmFmNTViZjI2ZTk5YjA0NjBkMjljMyIsIm5iZiI6MTc0NzM1OTAxMS44NDUsInN1YiI6IjY4MjY5NTIzZThhYjJlYzM4YjRiNThlMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.X5z6bQ_4d9d9MASFzAregzMaYJQWtmf2nnXlgZvz9NU'
+    //             },
+    //         };
+    //         const {data} = await axios(url, options);
+    //         setMovies(data.results);
+    //         setIsLoading(!isLoading);
+    //     } catch (err) {
+    //         console.log(err);
+    //         setIsLoading(!isLoading);
+    //     }
+    // };
+    // console.log(movies);
+    // useEffect(()=>{
+    //     fetchMovies();
+    // }, []);
 
-  if(isError){
-      return (
-          <View>
-              <Text>에러발생!</Text>
-          </View>
-      )
-  }
+    const goToDetails =(movie) => {
+        navigation.navigate("MovieDetail", {id : movie.id, title:movie.title});
+    }
 
-  return (
-      <SafeAreaView
-          style={{
-              flex : 1,
-              justifyContent : "center",
-              alignItems : "center",
-              backgroundColor : "black",
-      }}
-      >
-          <ScrollView style={{ width:"100%" }}>
-              {movies && movies.map((movie) => (
-                <TouchableOpacity onPress={()=> goToDetails(movie)} key={movie.id}>
-                    <View key={movie.id} style={{padding : 10}}>
-                        <Text style={{color:"white", fontFamily:"NotoSansKR", fontSize: 18 }}>{movie.title}</Text>
-                        <Text style={{ color: "white" }}>{movie.overview}</Text>
-                        <Text style={{ color: "white" }}>{movie.release_date}</Text>
-                    </View>
-                </TouchableOpacity>
-              ))}
-          </ScrollView>
-      </SafeAreaView>
-  );
+    if(isError) {
+        return (
+            <View>
+                <Text>에러발생!!</Text>
+            </View>
+        );
+    }
+
+    return (
+        <SafeAreaView
+            style={{
+                flex : 1,
+                justifyContent : "center",
+                alignItems : "center",
+                backgroundColor : "black",
+            }}
+        >
+            <ScrollView style={{ width:"100%" }}>
+                {movies && movies.map((movie) => (
+                    <TouchableOpacity onPress={()=> goToDetails(movie)} key={movie.id}>
+                        <View key={movie.id} style={{padding : 10}}>
+                            <Text style={{color:"white", fontFamily:"NotoSansKR", fontSize: 18 }}>{movie.title}</Text>
+                            <Text style={{ color: "white" }}>{movie.overview}</Text>
+                            <Text style={{ color: "white" }}>{movie.release_date}</Text>
+                        </View>
+                    </TouchableOpacity>
+                ))}
+            </ScrollView>
+        </SafeAreaView>
+    );
 }
 
 const movieStyles = StyleSheet.create({

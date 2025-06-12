@@ -1,8 +1,9 @@
 import React, {useMemo, useState} from 'react';
-import {View, Text, TouchableOpacity, Alert, StyleSheet, Dimensions} from "react-native";
+import {View, TouchableOpacity, Alert, StyleSheet, Dimensions} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import {Image} from "expo-image";
 import Block from "../../component/Block";
+import Text from "../../component/Text"
 import {Button} from "@react-navigation/elements";
 import theme from "../../constraint/theme";
 

@@ -1,0 +1,40 @@
+export const sampleCards = [
+    {
+        id: '1',
+        theme: 'white',
+        title: '영화 추천 - 인셉션',
+        description: '꿈속의 꿈을 조종하는 놀란 감독의 역작.',
+        imageUrl: 'https://s3.ap-northeast-2.amazonaws.com/img.kormedi.com/news/article/__icsFiles/artimage/2010/08/02/c_km601/693.jpg',
+        btnLabel: '자세히 보기',
+        onPress: () => console.log('인셉션 카드 클릭됨'),
+    },
+    {
+        id: '2',
+        theme: 'dark',
+        title: '다크 모드 카드',
+        description: '이건 어두운 테마예요.',
+        imageUrl: 'https://blog.riido.io/content/images/size/w2000/2025/02/---------2.jpg',
+        btnLabel: '액션',
+        onPress: () => console.log('다크 모드 액션 실행'),
+    },
+    {
+        id: '3',
+        theme: 'white',
+        title: '이미지 없는 카드',
+        description: '이미지가 없으면 이렇게 보입니다.',
+        btnLabel: '확인',
+        onPress: () => console.log('확인 버튼 클릭됨'),
+    },
+    {
+        id: '4',
+        theme: 'dark',
+        title: '버튼 없는 카드',
+        description: '버튼이 없으면 표시되지 않아요.',
+        imageUrl: 'https://blog.kakaocdn.net/dn/bHjnl9/btrJp0peLay/D4XGR3Z1gY6K6Qyr4JMy9k/img.png',
+    },
+    {
+        id: '5',
+        theme: 'white',
+        title: '제목만 있는 카드',
+    },
+];
